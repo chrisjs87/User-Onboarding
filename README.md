@@ -94,6 +94,10 @@ This project is a continuation of the work you have done previously.
 - [ ] Install Cypress with npm.
       `npm install cypress --save-dev`
 - [ ] run `npx cypress open`, After a moment, the Cypress Test Runner will launch.
+
+*** NOTE TO SELF: be sure to cd into the proper folder onboarding-app and then
+npx cypress open if you kill your terminal
+
 - [ ]  Locate the integration folder at cypress/integration in your code editor
 - [ ]  Create a form_test.js file.
 - [ ]  Watch the Cypress Test Runner update the list of specs.
