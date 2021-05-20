@@ -18,10 +18,10 @@ export default function Form(props) {
 		<form onSubmit={onSubmit}>
 
 			<div>
-					<div>{errors.name}</div>
-          <div>{errors.email}</div>
-          <div>{errors.password}</div>
-          <div>{errors.termsOfService}</div>
+					<div id='nameErr'>{errors.name}</div>
+          <div id='emailErr'>{errors.email}</div>
+          <div id='pwdErr'>{errors.password}</div>
+          <div id='tosErr'>{errors.termsOfService}</div>
 			</div>
 
 			<label>Name: 
@@ -59,7 +59,7 @@ export default function Form(props) {
 					checked={values.termsOfService}
 				/>
 			</label>
-			<button disabled={disabled}>Submit</button>
+			<button id='submitBtn' disabled={disabled}>Submit</button>
 		</form>
 	);
 }
