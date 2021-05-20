@@ -18,9 +18,12 @@ const initialFormErrors = {
   termsOfService: ''
 }
 
+const initialDisabled = true;
+
 function App() {
 	const [formValues, setFormValues] = useState(initialFormValues);
 	const [formErrors, setFormErrors] = useState(initialFormErrors);
+	const [disabled, setDisabled] = useState(initialDisabled)
 
 	const validate = (name, value) => {
     yup.reach(schema, name)
@@ -48,8 +51,9 @@ function App() {
 		console.log(newUser);
 	}
 
-
-
+	useEffect(() => {
+    schema.isValid(formValues).then(valid => setDisabled(!valid))
+  }, [formValues])
 
   return (
     <div className="App">
@@ -57,6 +61,7 @@ function App() {
         <h1>User OnBoarding App</h1>
         <Form values={formValues} 
 							change={inputChange} 
+							disabled={disabled}
 							submit={formSubmit} 
 							errors={formErrors} 
 				/>

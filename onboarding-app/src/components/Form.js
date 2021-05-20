@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function Form(props) {
-	const { values, submit, change, errors } = props;
+	const { values, submit, change, errors, disabled } = props;
 
 	const onSubmit = evt => {
 		evt.preventDefault()
@@ -59,7 +59,7 @@ export default function Form(props) {
 					checked={values.termsOfService}
 				/>
 			</label>
-			<button>Submit</button>
+			<button disabled={disabled}>Submit</button>
 		</form>
 	);
 }
