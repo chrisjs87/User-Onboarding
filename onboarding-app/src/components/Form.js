@@ -1,7 +1,12 @@
 import React from "react";
-//import yup
+
 export default function Form(props) {
-	const { values, submit, change } = props;
+	const { values, submit, change, errors } = props;
+
+	const onSubmit = evt => {
+		evt.preventDefault()
+		submit()
+	}
 
 	const onChange = evt => {
 		const { name, value, checked, type} = evt.target
@@ -10,7 +15,15 @@ export default function Form(props) {
 	}
 
   return (
-		<form>
+		<form onSubmit={onSubmit}>
+
+			<div>
+					<div>{errors.name}</div>
+          <div>{errors.email}</div>
+          <div>{errors.password}</div>
+          <div>{errors.termsOfService}</div>
+			</div>
+
 			<label>Name: 
 				<input 
 					type='text'
@@ -29,7 +42,7 @@ export default function Form(props) {
 				/>
 			</label>
 
-			<label>Password: 
+			<label>Password:
 				<input 
 					type='text'
 					name='password'
