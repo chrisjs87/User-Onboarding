@@ -3,6 +3,7 @@ import Form from "./components/Form";
 import React, { useState, useEffect } from 'react'
 import * as yup from 'yup'
 import schema from './validation/formSchema'
+import axios from 'axios'
 
 const initialFormValues = {
 	name: '',
@@ -24,6 +25,17 @@ function App() {
 	const [formValues, setFormValues] = useState(initialFormValues);
 	const [formErrors, setFormErrors] = useState(initialFormErrors);
 	const [disabled, setDisabled] = useState(initialDisabled)
+
+	const postNewUser = newUser => {
+		axios.post('https://reqres.in/api/users', newUser)
+			.then(res => {
+				console.log('You got a success!')
+			})
+			.catch(err => {
+				console.log(err)
+			})
+			.finally(setFormValues(initialFormValues))
+	}
 
 	const validate = (name, value) => {
     yup.reach(schema, name)
@@ -47,8 +59,7 @@ function App() {
 			password: formValues.password.trim(),
 			termsOfService: formValues.termsOfService
 		}
-
-		console.log(newUser);
+		postNewUser(newUser)
 	}
 
 	useEffect(() => {
